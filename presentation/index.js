@@ -1,32 +1,21 @@
 import React from 'react';
 import { Deck, Slide } from 'spectacle';
-import CodeSlide from 'spectacle-code-slide';
 import preloader from 'spectacle/lib/utils/preloader';
+import { HeaderSlideContent } from './components/header-slide-content';
+import { PlaceholderSlideContent } from './components/placeholder-slide-content';
+import { icons } from './icons';
 import { images } from './images';
-import { AddComplexitySlideContent, AddComplexitySlideNotes } from './slides/add-complexity-slide-content';
-import { AppMiniAppReminderSlideContent, AppMiniAppReminderSlideNotes } from './slides/app-mini-app-arch-reminder-slide-content';
-import { ArchitecturePatternsRevisitedSlideContent } from './slides/architecture-patterns-revisited-slide-content';
-import { ArchitecturePatternsSlideContent, ArchitecturePatternsSlideNotes } from './slides/architecture-patterns-slide-content';
-import { ClientServerRangeSlideContent, ClientServerRangeSlideNotes } from './slides/client-server-range-slide-content';
-import { ConnectingThePowerSlideContent, ConnectingThePowerSlideNotes } from './slides/connecting-the-power-slide-content';
-import { CreatedAPizzaShopSlideContent, CreatedAPizzaShopSlideNotes } from './slides/created-a-pizza-shop-slide-content';
+import { IveBeenThinkingSlideNotes } from './slide-notes/4-ive-been-thinking-slide-notes';
+import { TitleSlideContent, TitleSlideNotes } from './slides/1-title-slide-content';
+import { ShowOfHandsSlideContent, ShowOfHandsSlideNotes } from './slides/5-show-of-hands-slide-content';
+import { WhatreWeLookingAtSlideContent, WhatreWeLookingAtSlideNotes } from './slides/6-whatre-we-looking-at-slide-content';
+import { FirstLoadAndAnimationSlideContent, FirstLoadAndAnimationSlideNotes } from './slides/7-first-load-and-animations-slide-content';
+import { GlossaryOfTermsIntroSlideContent, GlossaryOfTermsIntroSlideNotes } from './slides/8-glossary-of-terms-intro-slide-content';
+import { GlossaryOfTermsSlideContent, GlossaryOfTermsSlideNotes } from './slides/9-glossary-of-terms-slide-content';
 import { GiveMeABetterSolutionSlideContent, GiveMeABetterSolutionSlideNotes } from './slides/give-me-a-better-solution-slide-content';
-import { HowToCombineInOneArchSlideContent, HowToCombineInOneArchSlideNotes } from './slides/how-to-combine-in-one-arch-slide-content';
-import { IveBeenThinkingSlideContent, IveBeenThinkingSlideNotes } from './slides/ive-been-thinking-slide-content';
-import { LetsDiscussStaticSlideContent, LetsDiscussStaticSlideNotes } from './slides/lets-discuss-static-slide-content';
-import { LitElementSlideContent, LitElementSlideNotes } from './slides/lit-element-slide-content';
-import { OnReflectionSlideContent, OnReflectionSlideNotes } from './slides/on-reflection-slide-content';
-import { RazorTSArchSlideContent, RazorTSArchSlideNotes } from './slides/razor-ts-arch-slide-content';
-import { SprinklesArchReminderSlideContent, SprinklesArchReminderSlideNotes } from './slides/sprinkles-arch-reminder-slide-content';
-import { StaticArchReminderSlideContent, StaticArchReminderSlideNotes } from './slides/static-arch-reminder-slide-content';
-import { TimeForSprinklesSlideContent, TimeForSprinklesSlideNotes } from './slides/time-for-sprinkles-slide-content';
-import { TitleSlideContent, TitleSlideNotes } from './slides/title-slide-content';
-import { WhyRazorPagesSlideContent, WhyRazorPagesSlideNotes } from './slides/why-razor-pages-slide-content';
-import { WhyTypescriptSlideContent, WhyTypescriptSlideNotes } from './slides/why-typescript-slide-content';
 import './styles/globals.css';
 import './styles/prism-theme.css';
 import { createCustomTheme } from './styles/theme-custom';
-import { FrontendDevADLSlideContent } from './templates/frontend-dev-adl-slide-content';
 import { ProfileLinksSlideContent, ProfileLinksSlideNotes } from './templates/profile-links-slide-content';
 import { ProfileSlideContent, ProfileSlideNotes } from './templates/profile-slide-content';
 
@@ -40,12 +29,19 @@ preloader(images);
 /**
  * reset CSS
  */
+// @ts-ignore
 require('normalize.css');
 
 export default class Presentation extends React.Component {
   render() {
     return (
       <Deck transition={['fade', 'slide']} transitionDuration={500} progress="pacman" controls={false} theme={customTheme}>
+        {/*
+         * ======================
+         * INTRO
+         * ======================
+         */}
+
         {/* SLIDE 1 */}
         <Slide
           bgColor="backgroundAlternate"
@@ -73,10 +69,101 @@ export default class Presentation extends React.Component {
           <ProfileLinksSlideContent />
         </Slide>
 
+        {/*
+         * ======================
+         * WHY PERF
+         * ======================
+         */}
+
         {/* SLIDE 4 */}
         <Slide bgColor="backgroundDefault" bgImage={images.genericBGDefault} bgSize="auto" notes={IveBeenThinkingSlideNotes}>
-          <IveBeenThinkingSlideContent />
+          <HeaderSlideContent icon={icons.thinkingFace} right>
+            performance... why?
+          </HeaderSlideContent>
         </Slide>
+
+        {/* SLIDE 5 */}
+        <Slide
+          bgColor="backgroundAlternate"
+          textColor="textAlternate"
+          bgImage={images.genericBGAlternate}
+          bgSize="auto"
+          notes={}
+        >
+          <PlaceholderSlideContent>really fast</PlaceholderSlideContent>
+        </Slide>
+
+        {/* SLIDE 6 */}
+        <Slide
+          bgColor="backgroundAlternate"
+          textColor="textAlternate"
+          bgImage={images.genericBGAlternate}
+          bgSize="auto"
+          notes={}
+        >
+          <PlaceholderSlideContent>mad twitter kudos</PlaceholderSlideContent>
+        </Slide>
+
+        {/* SLIDE 7 */}
+        <Slide
+          bgColor="backgroundAlternate"
+          textColor="textAlternate"
+          bgImage={images.genericBGAlternate}
+          bgSize="auto"
+          notes={ShowOfHandsSlideNotes}
+        >
+          <ShowOfHandsSlideContent />
+        </Slide>
+
+        {/*
+         * ======================
+         * OVERVIEW
+         * ======================
+         */}
+
+        {/* SLIDE 6 */}
+        <Slide bgColor="backgroundDefault" bgImage={images.genericBGDefault} bgSize="auto" notes={WhatreWeLookingAtSlideNotes}>
+          <WhatreWeLookingAtSlideContent />
+        </Slide>
+
+        {/* SLIDE 7 */}
+        <Slide
+          bgColor="backgroundAlternate"
+          textColor="textAlternate"
+          bgImage={images.genericBGAlternate}
+          bgSize="auto"
+          notes={FirstLoadAndAnimationSlideNotes}
+        >
+          <FirstLoadAndAnimationSlideContent />
+        </Slide>
+
+        {/*
+         * ======================
+         * TERMS & BACKGROUND
+         * ======================
+         */}
+
+        {/* SLIDE 8 */}
+        <Slide bgColor="backgroundDefault" bgImage={images.genericBGDefault} bgSize="auto" notes={GlossaryOfTermsIntroSlideNotes}>
+          <GlossaryOfTermsIntroSlideContent />
+        </Slide>
+
+        {/* SLIDE 9 */}
+        <Slide
+          bgColor="backgroundAlternate"
+          textColor="textAlternate"
+          bgImage={images.genericBGAlternate}
+          bgSize="auto"
+          notes={GlossaryOfTermsSlideNotes}
+        >
+          <GlossaryOfTermsSlideContent />
+        </Slide>
+
+        {/*
+         * ======================
+         * THANKS & GOODBYE
+         * ======================
+         */}
 
         {/* SLIDE 30 */}
         <Slide

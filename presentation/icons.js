@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const icons = {
   pointDown: require('../assets/icons/point-down.png'),
   thinkingFace: require('../assets/icons/thinking-face.png'),
@@ -12,5 +13,7 @@ export const icons = {
   fire: require('../assets/icons/fire.png'),
   construction: require('../assets/icons/construction.png'),
   hammer: require('../assets/icons/hammer.png'),
-  page: require('../assets/icons/page.png')
+  page: require('../assets/icons/page.png'),
+  raisedHand: require('../assets/icons/raised-hand.png'),
+  student: require('../assets/icons/student.png')
 };

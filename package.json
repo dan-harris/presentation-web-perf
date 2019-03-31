@@ -1,12 +1,13 @@
 {
   "name": "presentation-web-perf",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "danharris.io spectacle presentation boilerplate",
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run clean & cross-env NODE_ENV=production webpack --config webpack.config.production.js",
     "clean": "rimraf dist",
-    "deploy": "aws s3 sync ./dist s3://presentations.danharris.io/web-perf",
+    "deploy": "aws s3 sync ./dist s3://presentations.danharris.io/web-perf --exclude \"index.html\" --profile dan",
+    "deploy:full": "aws s3 sync ./dist s3://presentations.danharris.io/web-perf --profile dan",
     "publish": "npm run build && npm run deploy",
     "export": "spectacle-renderer --delay 3000",
     "lint": "eslint --ext .js,.jsx .",

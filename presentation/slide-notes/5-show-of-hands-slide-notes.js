@@ -1,16 +1,4 @@
 import React from 'react';
-import { Heading } from 'spectacle';
-import { HeadingImage } from '../components/heading-image';
-import { icons } from '../icons';
-
-export const ShowOfHandsSlideContent = () => (
-  <>
-    <Heading size={1}>
-      show of hands...&nbsp;
-      <HeadingImage src={icons.raisedHand} />
-    </Heading>
-  </>
-);
 
 export const ShowOfHandsSlideNotes = (
   <>

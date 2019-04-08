@@ -1,12 +1,12 @@
 import React from 'react';
 import { Deck, Slide } from 'spectacle';
 import preloader from 'spectacle/lib/utils/preloader';
+import { defaultBG, highlightBG } from './components/default-attrs/slide-defaults';
 import { HeaderSlideContent } from './components/header-slide-content';
 import { PlaceholderSlideContent } from './components/placeholder-slide-content';
 import { PlaceholderSlideNotes } from './components/placeholder-slide-notes';
 import { icons } from './icons';
 import { images } from './images';
-import { defaultBG, highlightBG } from './slide-defaults';
 import { GlossaryOfTermsSlideNotes } from './slide-notes/11-glossary-of-terms-slide-notes';
 import { IveBeenThinkingSlideNotes } from './slide-notes/4-ive-been-thinking-slide-notes';
 import { ShowOfHandsSlideNotes } from './slide-notes/5-show-of-hands-slide-notes';
@@ -14,6 +14,7 @@ import { WhatPerfBasicsSlideNotes } from './slide-notes/8-what-perf-basics-slide
 import { FirstLoadAndAnimationSlideNotes } from './slide-notes/9-first-load-and-animations-slide-notes';
 import { TitleSlideContent, TitleSlideNotes } from './slides/1-title-slide-content';
 import { GlossaryOfTermsSlideContent } from './slides/11-glossary-of-terms-slide-content';
+import { FastMadTwitterKudosSlideContent } from './slides/5-fast-mad-twitter-kudos-slide-content';
 import { FirstLoadAndAnimationSlideContent } from './slides/9-first-load-and-animations-slide-content';
 import './styles/globals.css';
 import './styles/prism-theme.css';
@@ -66,15 +67,13 @@ export default class Presentation extends React.Component {
          */}
 
         {/* SLIDE 4 */}
-        <Slide {...highlightBG} notes={IveBeenThinkingSlideNotes}>
-          <HeaderSlideContent icon={icons.thinkingFace} right>
-            performance... why?
-          </HeaderSlideContent>
+        <Slide {...defaultBG} notes={IveBeenThinkingSlideNotes}>
+          <HeaderSlideContent>why performance?</HeaderSlideContent>
         </Slide>
 
         {/* SLIDE 5 */}
         <Slide {...defaultBG} notes={PlaceholderSlideNotes}>
-          <PlaceholderSlideContent>really fast</PlaceholderSlideContent>
+          <FastMadTwitterKudosSlideContent />
         </Slide>
 
         {/* SLIDE 6 */}
@@ -121,6 +120,11 @@ export default class Presentation extends React.Component {
         {/* SLIDE 11 */}
         <Slide {...defaultBG} notes={GlossaryOfTermsSlideNotes}>
           <GlossaryOfTermsSlideContent />
+        </Slide>
+
+        {/* SLIDE 12 */}
+        <Slide {...defaultBG} notes={PlaceholderSlideNotes}>
+          <PlaceholderSlideContent>browser flow</PlaceholderSlideContent>
         </Slide>
 
         {/*

@@ -1,21 +1,12 @@
 import React from 'react';
-import { Heading, Image, Layout } from 'spectacle';
-import { images } from '../images';
+import { Heading } from 'spectacle';
+import { SubHeading } from '../components/sub-heading';
 
 export const TitleSlideContent = () => (
-  <Layout style={{ justifyContent: 'center' }}>
-    <Layout fit style={{ margin: '2.25rem 2.25rem 0 0' }}>
-      <Image src={images.perfSpeed} width={150} height={150} />
-    </Layout>
-    <Layout style={{ flexDirection: 'column' }}>
-      <Heading size={1} textAlign="left">
-        perf matters
-      </Heading>
-      <Heading size={2} textAlign="left">
-        web performance basics
-      </Heading>
-    </Layout>
-  </Layout>
+  <>
+    <Heading size={1}>perf matters</Heading>
+    <SubHeading size={3}>web basics</SubHeading>
+  </>
 );
 
 export const TitleSlideNotes = (

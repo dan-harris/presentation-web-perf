@@ -3,18 +3,19 @@
  */
 export const theme = {
   colors: {
-    primary: '#5e548e',
-    secondary: '#9a88c7',
-    tertiary: '#54428e', // required as default spectacle colour
-    quaternary: '#231942', // required as default spectacle colour
-    backgroundDefault: '#5e548e',
+    primary: '#000',
+    secondary: '#000',
+    tertiary: '#000', // required as default spectacle colour
+    quaternary: '#000', // required as default spectacle colour
+    backgroundDefault: '#fff',
     backgroundAlternate: '#fff',
-    textDefault: '#fff',
-    textAlternate: '#231942'
+    textDefault: '#000',
+    textAlternate: '#000'
   },
   fonts: {
-    primary: 'Open Sans',
-    secondary: 'Open Sans',
+    primary: 'Fjalla One',
+    secondary: 'Fira Sans',
+    tertiary: 'Pacifico',
     code: 'FuraCode Nerd Font Mono'
   },
   fontSize: '16px' // base font size

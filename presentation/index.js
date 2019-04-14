@@ -2,22 +2,23 @@ import React from 'react';
 import { Deck, Slide } from 'spectacle';
 import preloader from 'spectacle/lib/utils/preloader';
 import { defaultBG, highlightBG } from './components/default-attrs/slide-defaults';
-import { HeaderSlideContent } from './components/header-slide-content';
+import { HeaderWithSub } from './components/header-with-sub';
 import { PlaceholderSlideContent } from './components/placeholder-slide-content';
 import { PlaceholderSlideNotes } from './components/placeholder-slide-notes';
 import { icons } from './icons';
 import { images } from './images';
-import { TitleSlideNotes } from './slide-notes/1-title-slide-notes';
-import { GlossaryOfTermsSlideNotes } from './slide-notes/11-glossary-of-terms-slide-notes';
-import { ProfileSlideNotes } from './slide-notes/2-profile-slide-notes';
-import { ProfileLinksSlideNotes } from './slide-notes/3-profile-links-slide-notes';
-import { IveBeenThinkingSlideNotes } from './slide-notes/4-ive-been-thinking-slide-notes';
-import { ShowOfHandsSlideNotes } from './slide-notes/5-show-of-hands-slide-notes';
-import { WhatPerfBasicsSlideNotes } from './slide-notes/8-what-perf-basics-slide-notes';
-import { FirstLoadAndAnimationSlideNotes } from './slide-notes/9-first-load-and-animations-slide-notes';
-import { TitleSlideContent } from './slides/1-title-slide-content';
-import { GlossaryOfTermsSlideContent } from './slides/11-glossary-of-terms-slide-content';
-import { FirstLoadAndAnimationSlideContent } from './slides/9-first-load-and-animations-slide-content';
+import TitleSlideNotes from './slide-notes/1-title.md';
+import GlossaryOfTermsSlideNotes from './slide-notes/11-glossary-of-terms.md';
+import ProfileSlideNotes from './slide-notes/2-profile.md';
+import ProfileLinksSlideNotes from './slide-notes/3-profile-links.md';
+import IveBeenThinkingSlideNotes from './slide-notes/4-ive-been-thinking.md';
+import UberFastNotes from './slide-notes/5-uber-fast.md';
+import ShowOfHandsSlideNotes from './slide-notes/7-show-of-hands.md';
+import WhatPerfBasicsSlideNotes from './slide-notes/8-what-perf-basics.md';
+import FirstLoadAndAnimationSlideNotes from './slide-notes/9-first-load-and-animations.md';
+import { TitleSlideContent } from './slides/1-title';
+import { GlossaryOfTermsSlideContent } from './slides/11-glossary-of-terms';
+import { FirstLoadAndAnimationSlideContent } from './slides/9-first-load-and-animations';
 import './styles/globals.css';
 import './styles/prism-theme.css';
 import { createCustomTheme } from './styles/theme-custom';
@@ -70,22 +71,22 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 4 */}
         <Slide {...defaultBG} notes={IveBeenThinkingSlideNotes}>
-          <HeaderSlideContent>why performance?</HeaderSlideContent>
+          <HeaderWithSub>why performance?</HeaderWithSub>
         </Slide>
 
         {/* SLIDE 5 */}
-        <Slide {...defaultBG} notes={PlaceholderSlideNotes}>
-          <HeaderSlideContent>uber fast</HeaderSlideContent>
+        <Slide {...defaultBG} notes={UberFastNotes}>
+          <HeaderWithSub>uber fast</HeaderWithSub>
         </Slide>
 
         {/* SLIDE 6 */}
         <Slide {...defaultBG} notes={PlaceholderSlideNotes}>
-          <HeaderSlideContent subheading="kudos">mad twitter</HeaderSlideContent>
+          <HeaderWithSub subheading="kudos">mad twitter</HeaderWithSub>
         </Slide>
 
         {/* SLIDE 7 */}
         <Slide {...defaultBG} notes={ShowOfHandsSlideNotes}>
-          <HeaderSlideContent>show of hands</HeaderSlideContent>
+          <HeaderWithSub>show of hands</HeaderWithSub>
         </Slide>
 
         {/*
@@ -96,7 +97,7 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 8 */}
         <Slide {...highlightBG} notes={WhatPerfBasicsSlideNotes}>
-          <HeaderSlideContent>what perf basics?</HeaderSlideContent>
+          <HeaderWithSub>what perf basics?</HeaderWithSub>
         </Slide>
 
         {/* SLIDE 9 */}
@@ -112,7 +113,7 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 10 */}
         <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
-          <HeaderSlideContent icon={icons.nerdFace}>test time</HeaderSlideContent>
+          <HeaderWithSub subheading="test time">whaddya know?</HeaderWithSub>
         </Slide>
 
         {/* SLIDE 11 */}
@@ -133,7 +134,7 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 30 */}
         <Slide {...defaultBG} notes={PlaceholderSlideNotes}>
-          <HeaderSlideContent icon={icons.lightBulb}>whaddya think?</HeaderSlideContent>
+          <HeaderWithSub icon={icons.lightBulb}>whaddya think?</HeaderWithSub>
         </Slide>
 
         {/* SLIDE 32 */}

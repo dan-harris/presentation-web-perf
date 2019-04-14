@@ -4,7 +4,7 @@
 export const createGlobals = (colors = {}, fonts = {}) => ({
   body: {
     background: colors.backgroundAlternate,
-    fontFamily: `'${fonts.primary}', sans-serif`,
+    fontFamily: `'${fonts.secondary}', '${fonts.primary}', sans-serif`,
     fontWeight: 'normal',
     fontSize: '1em',
     color: colors.textDefault,

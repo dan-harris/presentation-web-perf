@@ -8,6 +8,11 @@ export const images = {
   arrowLeft: require('../assets/arrow-left.svg'),
   arrowRight: require('../assets/arrow-right.svg'),
   arrowUnderline: require('../assets/arrow-underline.svg'),
+  // logos
+  logoGithub: require('../assets/slide-images/github.svg'),
+  logoTwitter: require('../assets/slide-images/twitter.svg'),
+  logoLinkedin: require('../assets/slide-images/linkedin.svg'),
+  logoMedium: require('../assets/slide-images/medium.svg'),
   // slide content images
   fly: require('../assets/slide-images/fly.svg'),
   socialMedia: require('../assets/slide-images/social-media.svg'),

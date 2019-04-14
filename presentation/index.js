@@ -7,20 +7,22 @@ import { PlaceholderSlideContent } from './components/placeholder-slide-content'
 import { PlaceholderSlideNotes } from './components/placeholder-slide-notes';
 import { icons } from './icons';
 import { images } from './images';
+import { TitleSlideNotes } from './slide-notes/1-title-slide-notes';
 import { GlossaryOfTermsSlideNotes } from './slide-notes/11-glossary-of-terms-slide-notes';
+import { ProfileSlideNotes } from './slide-notes/2-profile-slide-notes';
+import { ProfileLinksSlideNotes } from './slide-notes/3-profile-links-slide-notes';
 import { IveBeenThinkingSlideNotes } from './slide-notes/4-ive-been-thinking-slide-notes';
 import { ShowOfHandsSlideNotes } from './slide-notes/5-show-of-hands-slide-notes';
 import { WhatPerfBasicsSlideNotes } from './slide-notes/8-what-perf-basics-slide-notes';
 import { FirstLoadAndAnimationSlideNotes } from './slide-notes/9-first-load-and-animations-slide-notes';
-import { TitleSlideContent, TitleSlideNotes } from './slides/1-title-slide-content';
+import { TitleSlideContent } from './slides/1-title-slide-content';
 import { GlossaryOfTermsSlideContent } from './slides/11-glossary-of-terms-slide-content';
-import { FastMadTwitterKudosSlideContent } from './slides/5-fast-mad-twitter-kudos-slide-content';
 import { FirstLoadAndAnimationSlideContent } from './slides/9-first-load-and-animations-slide-content';
 import './styles/globals.css';
 import './styles/prism-theme.css';
 import { createCustomTheme } from './styles/theme-custom';
-import { ProfileLinksSlideContent, ProfileLinksSlideNotes } from './templates/profile-links-slide-content';
-import { ProfileSlideContent, ProfileSlideNotes } from './templates/profile-slide-content';
+import { ProfileLinksSlideContent } from './templates/profile-links-slide-content';
+import { ProfileSlideContent } from './templates/profile-slide-content';
 
 /**
  * create custom theme
@@ -73,19 +75,17 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 5 */}
         <Slide {...defaultBG} notes={PlaceholderSlideNotes}>
-          <FastMadTwitterKudosSlideContent />
+          <HeaderSlideContent>uber fast</HeaderSlideContent>
         </Slide>
 
         {/* SLIDE 6 */}
         <Slide {...defaultBG} notes={PlaceholderSlideNotes}>
-          <PlaceholderSlideContent>mad twitter kudos</PlaceholderSlideContent>
+          <HeaderSlideContent subheading="kudos">mad twitter</HeaderSlideContent>
         </Slide>
 
         {/* SLIDE 7 */}
         <Slide {...defaultBG} notes={ShowOfHandsSlideNotes}>
-          <HeaderSlideContent icon={icons.raisedHand} right>
-            show of hands...
-          </HeaderSlideContent>
+          <HeaderSlideContent>show of hands</HeaderSlideContent>
         </Slide>
 
         {/*
@@ -96,9 +96,7 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 8 */}
         <Slide {...highlightBG} notes={WhatPerfBasicsSlideNotes}>
-          <HeaderSlideContent icon={icons.highVoltage} right>
-            what perf basics?
-          </HeaderSlideContent>
+          <HeaderSlideContent>what perf basics?</HeaderSlideContent>
         </Slide>
 
         {/* SLIDE 9 */}

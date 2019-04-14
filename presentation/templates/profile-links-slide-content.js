@@ -1,24 +1,31 @@
 import React from 'react';
-import { Heading, Layout } from 'spectacle';
+import { Heading, Image, Layout, Text } from 'spectacle';
 import { SubHeading } from '../components/sub-heading';
+import { images } from '../images';
+
+const CenteredImage = props => (
+  <Layout style={{ justifyContent: 'center', flexDirection: 'column' }}>
+    <Image style={{ margin: '0 auto 1.3rem' }} {...props} />
+    <Text>{props.children}</Text>
+  </Layout>
+);
 
 export const ProfileLinksSlideContent = () => (
   <>
-    <Layout style={{ justifyContent: 'center', flexDirection: 'column' }}>
+    <Layout style={{ justifyContent: 'center', flexDirection: 'column', marginBottom: '5rem' }}>
       <Heading size={2}>please heckle me</Heading>
       <SubHeading size={3}>on le socials</SubHeading>
     </Layout>
-  </>
-);
-
-export const ProfileLinksSlideNotes = (
-  <>
-    <h3>say hello 👋</h3>
-    <ul>
-      <li> be sure to heckle me on twitter </li>
-      <li> check out my articles on medium </li>
-      <li> judge my shitty code on github 😬 </li>
-      <li> consequently all code for this example is up there (links will go out after the talk)</li>
-    </ul>
+    <Layout style={{ justifyContent: 'space-evenly', padding: '0 3rem' }}>
+      <CenteredImage src={images.logoTwitter} height={65}>
+        @danharris_io
+      </CenteredImage>
+      <CenteredImage src={images.logoMedium} height={65}>
+        @danharris_io
+      </CenteredImage>
+      <CenteredImage src={images.logoGithub} height={65}>
+        @dan-harris
+      </CenteredImage>
+    </Layout>
   </>
 );

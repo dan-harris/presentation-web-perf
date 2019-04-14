@@ -1,11 +1,10 @@
 /**
  * overrides for spectacle text default theme
  */
-export function createText(colors = {}, fonts = {}) {
-  return {
-    color: "inherit",
-    fontSize: "1.875rem",
-    fontFamily: fonts.primary,
-    margin: "0.25rem auto"
-  };
-}
+export const createText = (colors = {}, fonts = {}) => ({
+  color: 'inherit',
+  fontSize: '1.8rem',
+  fontWeight: 600,
+  fontFamily: fonts.secondary,
+  margin: '0rem auto 0.25rem'
+});

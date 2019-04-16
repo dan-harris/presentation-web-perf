@@ -3,11 +3,11 @@
  */
 const defaultHeadingStyles = {
   color: 'inherit',
-  fontWeight: 'bold',
+  fontWeight: 550,
   lineHeight: 1,
   zoom: 1,
   textTransform: 'uppercase',
-  letterSpacing: '0.01em',
+  letterSpacing: '-0.01em',
   margin: '0.2em 0'
 };
 
@@ -18,7 +18,8 @@ export const createHeading = (colors = {}, fonts = {}) => ({
   h1: {
     ...defaultHeadingStyles,
     fontSize: '6rem',
-    fontFamily: fonts.primary
+    fontFamily: fonts.primary,
+    fontWeight: 550
   },
   h2: {
     ...defaultHeadingStyles,

@@ -3,12 +3,12 @@ import { Deck, Slide } from 'spectacle';
 import preloader from 'spectacle/lib/utils/preloader';
 import { defaultBG, highlightBG } from './components/default-attrs/slide-defaults';
 import { HeaderWithSub } from './components/header-with-sub';
-import { PlaceholderSlideContent } from './components/placeholder-slide-content';
 import { PlaceholderSlideNotes } from './components/placeholder-slide-notes';
 import { icons } from './icons';
 import { images } from './images';
 import TitleSlideNotes from './slide-notes/1-title.md';
 import GlossaryOfTermsSlideNotes from './slide-notes/11-glossary-of-terms.md';
+import BrowserFlowSlideNotes from './slide-notes/12-browser-flow.md';
 import ProfileSlideNotes from './slide-notes/2-profile.md';
 import ProfileLinksSlideNotes from './slide-notes/3-profile-links.md';
 import IveBeenThinkingSlideNotes from './slide-notes/4-ive-been-thinking.md';
@@ -18,6 +18,7 @@ import WhatPerfBasicsSlideNotes from './slide-notes/8-what-perf-basics.md';
 import FirstLoadAndAnimationSlideNotes from './slide-notes/9-first-load-and-animations.md';
 import { TitleSlideContent } from './slides/1-title';
 import { GlossaryOfTermsSlideContent } from './slides/11-glossary-of-terms';
+import { BrowserFlow } from './slides/12-browser-flow';
 import { FirstLoadAndAnimationSlideContent } from './slides/9-first-load-and-animations';
 import './styles/globals.css';
 import './styles/prism-theme.css';
@@ -122,8 +123,8 @@ export default class Presentation extends React.Component {
         </Slide>
 
         {/* SLIDE 12 */}
-        <Slide {...defaultBG} notes={PlaceholderSlideNotes}>
-          <PlaceholderSlideContent>browser flow</PlaceholderSlideContent>
+        <Slide {...defaultBG} notes={BrowserFlowSlideNotes}>
+          <BrowserFlow />
         </Slide>
 
         {/*

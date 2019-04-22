@@ -1,34 +1,32 @@
 import React from 'react';
 import { Deck, Slide } from 'spectacle';
-import CodeSlide from 'spectacle-code-slide';
 import preloader from 'spectacle/lib/utils/preloader';
+import { defaultBG, highlightBG } from './components/default-attrs/slide-defaults';
+import { HeaderWithSub } from './components/header-with-sub';
+import { PlaceholderSlideNotes } from './components/placeholder-slide-notes';
+import { icons } from './icons';
 import { images } from './images';
-import { AddComplexitySlideContent, AddComplexitySlideNotes } from './slides/add-complexity-slide-content';
-import { AppMiniAppReminderSlideContent, AppMiniAppReminderSlideNotes } from './slides/app-mini-app-arch-reminder-slide-content';
-import { ArchitecturePatternsRevisitedSlideContent } from './slides/architecture-patterns-revisited-slide-content';
-import { ArchitecturePatternsSlideContent, ArchitecturePatternsSlideNotes } from './slides/architecture-patterns-slide-content';
-import { ClientServerRangeSlideContent, ClientServerRangeSlideNotes } from './slides/client-server-range-slide-content';
-import { ConnectingThePowerSlideContent, ConnectingThePowerSlideNotes } from './slides/connecting-the-power-slide-content';
-import { CreatedAPizzaShopSlideContent, CreatedAPizzaShopSlideNotes } from './slides/created-a-pizza-shop-slide-content';
-import { GiveMeABetterSolutionSlideContent, GiveMeABetterSolutionSlideNotes } from './slides/give-me-a-better-solution-slide-content';
-import { HowToCombineInOneArchSlideContent, HowToCombineInOneArchSlideNotes } from './slides/how-to-combine-in-one-arch-slide-content';
-import { IveBeenThinkingSlideContent, IveBeenThinkingSlideNotes } from './slides/ive-been-thinking-slide-content';
-import { LetsDiscussStaticSlideContent, LetsDiscussStaticSlideNotes } from './slides/lets-discuss-static-slide-content';
-import { LitElementSlideContent, LitElementSlideNotes } from './slides/lit-element-slide-content';
-import { OnReflectionSlideContent, OnReflectionSlideNotes } from './slides/on-reflection-slide-content';
-import { RazorTSArchSlideContent, RazorTSArchSlideNotes } from './slides/razor-ts-arch-slide-content';
-import { SprinklesArchReminderSlideContent, SprinklesArchReminderSlideNotes } from './slides/sprinkles-arch-reminder-slide-content';
-import { StaticArchReminderSlideContent, StaticArchReminderSlideNotes } from './slides/static-arch-reminder-slide-content';
-import { TimeForSprinklesSlideContent, TimeForSprinklesSlideNotes } from './slides/time-for-sprinkles-slide-content';
-import { TitleSlideContent, TitleSlideNotes } from './slides/title-slide-content';
-import { WhyRazorPagesSlideContent, WhyRazorPagesSlideNotes } from './slides/why-razor-pages-slide-content';
-import { WhyTypescriptSlideContent, WhyTypescriptSlideNotes } from './slides/why-typescript-slide-content';
+import TitleSlideNotes from './slide-notes/1-title.md';
+import GlossaryOfTermsSlideNotes from './slide-notes/11-glossary-of-terms.md';
+import BrowserFlowSlideNotes from './slide-notes/12-browser-flow.md';
+import BrowserFrameFlowSlideNotes from './slide-notes/13-browser-frame-flow.md';
+import ProfileSlideNotes from './slide-notes/2-profile.md';
+import ProfileLinksSlideNotes from './slide-notes/3-profile-links.md';
+import IveBeenThinkingSlideNotes from './slide-notes/4-ive-been-thinking.md';
+import UberFastNotes from './slide-notes/5-uber-fast.md';
+import ShowOfHandsSlideNotes from './slide-notes/7-show-of-hands.md';
+import WhatPerfBasicsSlideNotes from './slide-notes/8-what-perf-basics.md';
+import FirstLoadAndAnimationSlideNotes from './slide-notes/9-first-load-and-animations.md';
+import { TitleSlideContent } from './slides/1-title';
+import { GlossaryOfTermsSlideContent } from './slides/11-glossary-of-terms';
+import { BrowserFlow } from './slides/12-browser-flow';
+import { BrowserFrameFlow } from './slides/13-browser-frame-flow';
+import { FirstLoadAndAnimationSlideContent } from './slides/9-first-load-and-animations';
 import './styles/globals.css';
 import './styles/prism-theme.css';
 import { createCustomTheme } from './styles/theme-custom';
-import { FrontendDevADLSlideContent } from './templates/frontend-dev-adl-slide-content';
-import { ProfileLinksSlideContent, ProfileLinksSlideNotes } from './templates/profile-links-slide-content';
-import { ProfileSlideContent, ProfileSlideNotes } from './templates/profile-slide-content';
+import { ProfileLinksSlideContent } from './templates/profile-links-slide-content';
+import { ProfileSlideContent } from './templates/profile-slide-content';
 
 /**
  * create custom theme
@@ -40,57 +38,157 @@ preloader(images);
 /**
  * reset CSS
  */
+// @ts-ignore
 require('normalize.css');
 
 export default class Presentation extends React.Component {
   render() {
     return (
       <Deck transition={['fade', 'slide']} transitionDuration={500} progress="pacman" controls={false} theme={customTheme}>
+        {/*
+         * ======================
+         * INTRO
+         * ======================
+         */}
+
         {/* SLIDE 1 */}
-        <Slide
-          bgColor="backgroundAlternate"
-          textColor="textAlternate"
-          bgImage={images.genericBGAlternate}
-          bgSize="auto"
-          notes={TitleSlideNotes}
-        >
+        <Slide {...defaultBG} notes={TitleSlideNotes}>
           <TitleSlideContent />
         </Slide>
 
         {/* SLIDE 2 */}
-        <Slide bgColor="backgroundDefault" bgImage={images.genericBGDefault} bgSize="auto" notes={ProfileSlideNotes}>
+        <Slide {...highlightBG} notes={ProfileSlideNotes}>
           <ProfileSlideContent />
         </Slide>
 
         {/* SLIDE 3 */}
-        <Slide
-          textColor="textAlternate"
-          bgColor="backgroundAlternate"
-          bgImage={images.genericBGAlternate}
-          bgSize="auto"
-          notes={ProfileLinksSlideNotes}
-        >
+        <Slide {...defaultBG} notes={ProfileLinksSlideNotes}>
           <ProfileLinksSlideContent />
         </Slide>
 
+        {/*
+         * ======================
+         * WHY PERF
+         * ======================
+         */}
+
         {/* SLIDE 4 */}
-        <Slide bgColor="backgroundDefault" bgImage={images.genericBGDefault} bgSize="auto" notes={IveBeenThinkingSlideNotes}>
-          <IveBeenThinkingSlideContent />
+        <Slide {...defaultBG} notes={IveBeenThinkingSlideNotes}>
+          <HeaderWithSub>why performance?</HeaderWithSub>
         </Slide>
 
+        {/* SLIDE 5 */}
+        <Slide {...defaultBG} notes={UberFastNotes}>
+          <HeaderWithSub>uber fast</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 6 */}
+        <Slide {...defaultBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub subheading="kudos">mad twitter</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 7 */}
+        <Slide {...defaultBG} notes={ShowOfHandsSlideNotes}>
+          <HeaderWithSub>show of hands</HeaderWithSub>
+        </Slide>
+
+        {/*
+         * ======================
+         * OVERVIEW
+         * ======================
+         */}
+
+        {/* SLIDE 8 */}
+        <Slide {...highlightBG} notes={WhatPerfBasicsSlideNotes}>
+          <HeaderWithSub>what perf basics?</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 9 */}
+        <Slide {...defaultBG} notes={FirstLoadAndAnimationSlideNotes}>
+          <FirstLoadAndAnimationSlideContent />
+        </Slide>
+
+        {/*
+         * ======================
+         * TERMS & BACKGROUND
+         * ======================
+         */}
+
+        {/* SLIDE 10 */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub subheading="test time">whaddya know?</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE 11 */}
+        <Slide {...defaultBG} notes={GlossaryOfTermsSlideNotes}>
+          <GlossaryOfTermsSlideContent />
+        </Slide>
+
+        {/* SLIDE 12 */}
+        <Slide {...defaultBG} notes={BrowserFlowSlideNotes}>
+          <BrowserFlow />
+        </Slide>
+
+        {/* SLIDE 13 */}
+        <Slide {...defaultBG} notes={BrowserFrameFlowSlideNotes}>
+          <BrowserFrameFlow />
+        </Slide>
+
+        {/*
+         * ======================
+         * FIRST LOAD
+         * ======================
+         */}
+
+        {/* SLIDE 14 */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub subheading="loaded">getting content</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub subheading="css">styles, styles, styles</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub subheading="javacript">moar interactivity</HeaderWithSub>
+        </Slide>
+
+        {/*
+         * ======================
+         * ANIMATIONS
+         * ======================
+         */}
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub subheading="movement">pretty looking</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub>transform positioning</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub subheading="jankiness">animation frame</HeaderWithSub>
+        </Slide>
+
+        {/*
+         * ======================
+         * THANKS & GOODBYE
+         * ======================
+         */}
+
         {/* SLIDE 30 */}
-        <Slide
-          bgColor="backgroundAlternate"
-          textColor="textAlternate"
-          bgImage={images.genericBGAlternate}
-          bgSize="auto"
-          notes={GiveMeABetterSolutionSlideNotes}
-        >
-          <GiveMeABetterSolutionSlideContent />
+        <Slide {...defaultBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub icon={icons.lightBulb}>whaddya think?</HeaderWithSub>
         </Slide>
 
         {/* SLIDE 32 */}
-        <Slide textColor="textAlternate" bgColor="backgroundAlternate" bgImage={images.genericBGAlternate} bgSize="auto">
+        <Slide {...defaultBG}>
           <ProfileLinksSlideContent />
         </Slide>
       </Deck>

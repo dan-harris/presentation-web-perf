@@ -1,56 +1,49 @@
 /**
+ * default heading values
+ */
+const defaultHeadingStyles = {
+  color: 'inherit',
+  fontWeight: 550,
+  lineHeight: 1,
+  zoom: 1,
+  textTransform: 'uppercase',
+  letterSpacing: '-0.01em',
+  margin: '0.2em 0'
+};
+
+/**
  * overrides for spectacle headings default theme
  */
-export function createHeading(colors = {}, fonts = {}) {
-  return {
-    h1: {
-      color: "inherit",
-      fontSize: "5.0625rem",
-      fontFamily: fonts.primary,
-      lineHeight: 1,
-      fontWeight: "bold",
-      margin: "1.5rem 0",
-      zoom: 1
-    },
-    h2: {
-      color: "inherit",
-      fontSize: "3.75rem",
-      fontFamily: fonts.primary,
-      lineHeight: 1,
-      fontWeight: "bold",
-      margin: 0
-    },
-    h3: {
-      color: "inherit",
-      fontSize: "3rem",
-      fontFamily: fonts.primary,
-      lineHeight: 1,
-      fontWeight: "bold",
-      margin: "0.5rem auto"
-    },
-    h4: {
-      color: "inherit",
-      fontSize: "2.625rem",
-      fontFamily: fonts.primary,
-      lineHeight: 1,
-      fontWeight: "bold",
-      margin: "0.5rem auto"
-    },
-    h5: {
-      color: "inherit",
-      fontSize: "2.25rem",
-      fontFamily: fonts.primary,
-      lineHeight: 1,
-      fontWeight: "bold",
-      margin: "0.5rem auto"
-    },
-    h6: {
-      color: "inherit",
-      fontSize: "2.25rem",
-      fontFamily: fonts.primary,
-      lineHeight: 1,
-      fontWeight: "bold",
-      margin: "0.5rem auto"
-    }
-  };
-}
+export const createHeading = (colors = {}, fonts = {}) => ({
+  h1: {
+    ...defaultHeadingStyles,
+    fontSize: '6rem',
+    fontFamily: fonts.primary,
+    fontWeight: 550
+  },
+  h2: {
+    ...defaultHeadingStyles,
+    fontSize: '5.0625rem',
+    fontFamily: fonts.primary
+  },
+  h3: {
+    ...defaultHeadingStyles,
+    fontSize: '3.75rem',
+    fontFamily: fonts.primary
+  },
+  h4: {
+    ...defaultHeadingStyles,
+    fontSize: '3rem',
+    fontFamily: fonts.primary
+  },
+  h5: {
+    ...defaultHeadingStyles,
+    fontSize: '2.625rem',
+    fontFamily: fonts.primary
+  },
+  h6: {
+    ...defaultHeadingStyles,
+    fontSize: '2.25rem',
+    fontFamily: fonts.primary
+  }
+});

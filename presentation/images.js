@@ -20,5 +20,7 @@ export const images = {
   fileHTML: require('../assets/slide-images/file-html.svg'),
   fileJS: require('../assets/slide-images/file-js.svg'),
   share: require('../assets/slide-images/share.svg'),
-  triangle: require('../assets/slide-images/triangle.svg')
+  triangle: require('../assets/slide-images/triangle.svg'),
+  pictureFrame: require('../assets/slide-images/picture.svg'),
+  gear: require('../assets/slide-images/gear.svg')
 };

@@ -8,4 +8,5 @@ export const LayoutExpanded = styled.div`
   width: 150%;
   max-width: 1400px;
   margin-left: -25%;
+  position: relative;
 `;

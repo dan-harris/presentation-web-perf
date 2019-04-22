@@ -9,6 +9,7 @@ import { images } from './images';
 import TitleSlideNotes from './slide-notes/1-title.md';
 import GlossaryOfTermsSlideNotes from './slide-notes/11-glossary-of-terms.md';
 import BrowserFlowSlideNotes from './slide-notes/12-browser-flow.md';
+import BrowserFrameFlowSlideNotes from './slide-notes/13-browser-frame-flow.md';
 import ProfileSlideNotes from './slide-notes/2-profile.md';
 import ProfileLinksSlideNotes from './slide-notes/3-profile-links.md';
 import IveBeenThinkingSlideNotes from './slide-notes/4-ive-been-thinking.md';
@@ -19,6 +20,7 @@ import FirstLoadAndAnimationSlideNotes from './slide-notes/9-first-load-and-anim
 import { TitleSlideContent } from './slides/1-title';
 import { GlossaryOfTermsSlideContent } from './slides/11-glossary-of-terms';
 import { BrowserFlow } from './slides/12-browser-flow';
+import { BrowserFrameFlow } from './slides/13-browser-frame-flow';
 import { FirstLoadAndAnimationSlideContent } from './slides/9-first-load-and-animations';
 import './styles/globals.css';
 import './styles/prism-theme.css';
@@ -125,6 +127,53 @@ export default class Presentation extends React.Component {
         {/* SLIDE 12 */}
         <Slide {...defaultBG} notes={BrowserFlowSlideNotes}>
           <BrowserFlow />
+        </Slide>
+
+        {/* SLIDE 13 */}
+        <Slide {...defaultBG} notes={BrowserFrameFlowSlideNotes}>
+          <BrowserFrameFlow />
+        </Slide>
+
+        {/*
+         * ======================
+         * FIRST LOAD
+         * ======================
+         */}
+
+        {/* SLIDE 14 */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub subheading="loaded">getting content</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub subheading="css">styles, styles, styles</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub subheading="javacript">moar interactivity</HeaderWithSub>
+        </Slide>
+
+        {/*
+         * ======================
+         * ANIMATIONS
+         * ======================
+         */}
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub subheading="movement">pretty looking</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub>transform positioning</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
+          <HeaderWithSub subheading="jankiness">animation frame</HeaderWithSub>
         </Slide>
 
         {/*

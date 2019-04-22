@@ -1,17 +1,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { Heading, Image, Layout } from 'spectacle';
+import { Image, Layout } from 'spectacle';
 import { images } from '../images';
-
-/**
- * gross overrides for heading component
- */
-const SubHeadingText = styled(Heading)`
-  font-family: Pacifico, cursive !important;
-  text-transform: lowercase !important;
-  font-weight: 500 !important;
-  margin: 0 !important;
-`;
+import { HeadingWithEmphasis } from './heading-with-emphasis';
 
 /**
  * inline arrow images
@@ -27,9 +18,9 @@ export const SubHeading = props => (
     ) : (
       <>
         <ArrowImage src={images.arrowLeft} />
-        <SubHeadingText size={2} {...props}>
+        <HeadingWithEmphasis size={2} {...props}>
           {props.children}
-        </SubHeadingText>
+        </HeadingWithEmphasis>
         <ArrowImage src={images.arrowRight} />
       </>
     )}

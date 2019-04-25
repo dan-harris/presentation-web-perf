@@ -1,4 +1,5 @@
 import React from 'react';
+import Iframe from 'react-iframe';
 import { Deck, Slide } from 'spectacle';
 import preloader from 'spectacle/lib/utils/preloader';
 import { defaultBG, highlightBG } from './components/default-attrs/slide-defaults';
@@ -147,7 +148,7 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE ?? */}
         <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
-          <HeaderWithSub subheading="css">styles, styles, styles</HeaderWithSub>
+          <HeaderWithSub>Render Blocking CSS</HeaderWithSub>
         </Slide>
 
         {/* SLIDE ?? */}
@@ -172,8 +173,23 @@ export default class Presentation extends React.Component {
         </Slide>
 
         {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes} style={{ padding: 0 }}>
+          <Iframe src="./examples/position-vs-transform.html" width="1000px" height="530px" />
+        </Slide>
+
+        {/* SLIDE ?? */}
         <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
           <HeaderWithSub subheading="jankiness">animation frame</HeaderWithSub>
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes} style={{ padding: 0 }}>
+          <Iframe src="./examples/settimeout-vs-raf.html" width="1000px" height="530px" />
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes} style={{ padding: 0 }}>
+          <Iframe src="./examples/css-vs-js.html" width="1000px" height="530px" />
         </Slide>
 
         {/*

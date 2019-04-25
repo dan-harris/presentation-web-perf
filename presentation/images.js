@@ -22,5 +22,10 @@ export const images = {
   share: require('../assets/slide-images/share.svg'),
   triangle: require('../assets/slide-images/triangle.svg'),
   pictureFrame: require('../assets/slide-images/picture.svg'),
-  gear: require('../assets/slide-images/gear.svg')
+  gear: require('../assets/slide-images/gear.svg'),
+  candy: require('../assets/slide-images/candy.svg'),
+  candy2: require('../assets/slide-images/candy-2.svg'),
+  gearSmall: require('../assets/slide-images/gear-small.svg'),
+  timeLeft: require('../assets/slide-images/time-left.svg'),
+  play: require('../assets/slide-images/play.svg')
 };

@@ -4,6 +4,7 @@ var path = require('path');
 var webpack = require('webpack');
 const marked = require('marked');
 const renderer = new marked.Renderer();
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -12,9 +13,14 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/dist'
+    publicPath: '/'
   },
-  plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    // copy assets to dist
+    new CopyWebpackPlugin([{ from: './assets', to: './' }]),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
   module: {
     rules: [
       {

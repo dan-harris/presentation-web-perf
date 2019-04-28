@@ -4,6 +4,7 @@ import { Deck, Slide } from 'spectacle';
 import preloader from 'spectacle/lib/utils/preloader';
 import { defaultBG, highlightBG } from './components/default-attrs/slide-defaults';
 import { HeaderWithSub } from './components/header-with-sub';
+import { HeadingWithEmphasis } from './components/heading-with-emphasis';
 import { PlaceholderSlideNotes } from './components/placeholder-slide-notes';
 import { icons } from './icons';
 import { images } from './images';
@@ -152,6 +153,22 @@ export default class Presentation extends React.Component {
         </Slide>
 
         {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes} className="external-frame">
+          <HeadingWithEmphasis size={3} style={{ textAlign: 'right' }}>
+            external css
+          </HeadingWithEmphasis>
+          <Iframe src="./examples/render-blocking-css.html" width="1000px" height="530px" />
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes} className="external-frame">
+          <HeadingWithEmphasis size={3} style={{ textAlign: 'right' }}>
+            external css 2
+          </HeadingWithEmphasis>
+          <Iframe src="./examples/render-blocking-css-2.html" width="1000px" height="530px" />
+        </Slide>
+
+        {/* SLIDE ?? */}
         <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
           <HeaderWithSub subheading="javacript">moar interactivity</HeaderWithSub>
         </Slide>
@@ -173,7 +190,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         {/* SLIDE ?? */}
-        <Slide {...highlightBG} notes={PlaceholderSlideNotes} style={{ padding: 0 }}>
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes} className="external-frame">
           <Iframe src="./examples/position-vs-transform.html" width="1000px" height="530px" />
         </Slide>
 
@@ -183,7 +200,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         {/* SLIDE ?? */}
-        <Slide {...highlightBG} notes={PlaceholderSlideNotes} style={{ padding: 0 }}>
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes} className="external-frame">
           <Iframe src="./examples/settimeout-vs-raf.html" width="1000px" height="530px" />
         </Slide>
 

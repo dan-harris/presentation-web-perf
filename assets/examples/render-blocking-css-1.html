@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" />
-    <!-- <link href="http://deelay.me/3000/localhost:3000/examples/first-load-full.css" rel="stylesheet" /> -->
+    <link href="http://deelay.me/2000/localhost:3000/examples/first-load-full.css" rel="stylesheet" />
     <!-- <link
       rel="preload"
       href="http://deelay.me/4000/localhost:3000/examples/first-load-full.css"
@@ -38,10 +38,11 @@
           &lt;html&gt;<br />
           &nbsp;&nbsp;&lt;head&gt; <br />
           <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel=&quot;stylesheet&quot; href=&quot;one-big-file-of.css&quot; /&gt; <br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
           &nbsp;&nbsp;&lt;/head&gt;<br />
           &nbsp;&nbsp;&lt;body&gt; <br />
           <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel=&quot;stylesheet&quot; href=&quot;one-big-file-of.css&quot; /&gt; <br />
           &nbsp;&nbsp;&lt;/body&gt; <br />
           &lt;/html&gt;<br />
         </code>
@@ -87,8 +88,7 @@
        */
       function reloadPage() {
         document.body.innerHTML = '';
-        document.body.style.backgroundColor = 'transparent'; // shifty tricks to show background spinner 😱
-        setTimeout(() => (window.location = window.location), 1000);
+        window.location = window.location;
       }
 
       /**
@@ -107,11 +107,10 @@
         const { FPCounterElement, FMPCounterElement } = getFirstLoadElements();
         setTimeout(() => {
           FPCounterElement.textContent = Math.round(window.perfume.firstPaintDuration);
-          const firstMeaningfulPaint = window.perfume.end('FirstMeaningfulPaint');
-          if (!isNaN(firstMeaningfulPaint)) FMPCounterElement.textContent = Math.round(firstMeaningfulPaint - 500);
+          FMPCounterElement.textContent = Math.round(window.perfume.firstPaintDuration); //Math.round(window.perfume.end('FirstMeaningfulPaint'));
         }, 500);
       });
     </script>
-    <link href="http://deelay.me/2000/localhost:3000/examples/first-load-full.css" rel="stylesheet" />
+    <!-- <link href="http://deelay.me/3000/localhost:3000/examples/first-load-full.css" rel="stylesheet" /> -->
   </body>
 </html>

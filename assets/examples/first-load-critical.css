@@ -8,23 +8,19 @@ body {
   width: 100%;
   text-align: center;
 }
-
+/* 
 @font-face {
   font-family: 'FuraCode Nerd Font Mono';
   src: url('./Fura-Code-Retina-Nerd-Font-Complete-Mono.woff') format('woff');
   font-weight: 400;
   font-style: normal;
-}
+} */
 
 code {
   text-align: left;
   font-size: 1.75rem;
   font-family: 'FuraCode Nerd Font Mono', monospace;
   font-weight: 600;
-}
-
-code .comment {
-  color: #9e9e9e;
 }
 
 :focus {

@@ -15,17 +15,15 @@
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" />
-    <!-- <link href="http://deelay.me/3000/localhost:3000/examples/first-load-full.css" rel="stylesheet" /> -->
-    <!-- <link
-      rel="preload"
-      href="http://deelay.me/4000/localhost:3000/examples/first-load-full.css"
-      as="style"
-      onload="this.rel='stylesheet'"
-    /> -->
+    <link href="http://deelay.me/200/localhost:3000/examples/first-load-critical.css" rel="stylesheet" />
+    <link rel="preload" href="http://deelay.me/2000/localhost:3000/examples/first-load-full.css" as="style" onload="onDOMLoad(this)" />
     <script src="https://unpkg.com/perfume.js/dist/perfume.iife.min.js"></script>
     <style>
       body {
         background-color: white; /* explicitly set this so we can hide loading spinners behing iframe */
+      }
+      code {
+        line-height: 1.2;
       }
     </style>
   </head>
@@ -38,10 +36,12 @@
           &lt;html&gt;<br />
           &nbsp;&nbsp;&lt;head&gt; <br />
           <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel=&quot;stylesheet&quot; href=&quot;critical.css&quot; /&gt; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel=&quot;preload&quot; href=&quot;one-big-file-of.css&quot; .. /&gt;<br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
           &nbsp;&nbsp;&lt;/head&gt;<br />
           &nbsp;&nbsp;&lt;body&gt; <br />
           <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel=&quot;stylesheet&quot; href=&quot;one-big-file-of.css&quot; /&gt; <br />
           &nbsp;&nbsp;&lt;/body&gt; <br />
           &lt;/html&gt;<br />
         </code>
@@ -51,6 +51,7 @@
       <section class="indicators">
         <label><span class="fp-counter">0</span> FP</label>
         <label><span class="fmp-counter">0</span> FMP</label>
+        <label><span class="all-counter">0</span> ALL</label>
       </section>
 
       <!-- actions -->
@@ -80,7 +81,7 @@
        * setup perfume for our load metrics
        */
       window.perfume = new Perfume({ firstPaint: true, firstContentfulPaint: true, firstInputDelay: true });
-      window.perfume.start('FirstMeaningfulPaint');
+      window.perfume.start('AllComplete');
 
       /**
        * reload the page so we can check metrics
@@ -97,7 +98,8 @@
       function getFirstLoadElements() {
         const FPCounterElement = document.querySelector('.fp-counter');
         const FMPCounterElement = document.querySelector('.fmp-counter');
-        return { FPCounterElement, FMPCounterElement };
+        const allCounterElement = document.querySelector('.all-counter');
+        return { FPCounterElement, FMPCounterElement, allCounterElement };
       }
 
       /**
@@ -107,11 +109,21 @@
         const { FPCounterElement, FMPCounterElement } = getFirstLoadElements();
         setTimeout(() => {
           FPCounterElement.textContent = Math.round(window.perfume.firstPaintDuration);
-          const firstMeaningfulPaint = window.perfume.end('FirstMeaningfulPaint');
-          if (!isNaN(firstMeaningfulPaint)) FMPCounterElement.textContent = Math.round(firstMeaningfulPaint - 500);
+          FMPCounterElement.textContent = Math.round(window.perfume.firstPaintDuration); //Math.round(window.perfume.end('FirstMeaningfulPaint'));
         }, 500);
       });
+
+      /**
+       * set our all complete once loaded
+       */
+      window.onDOMLoad = function onDOMLoad(element) {
+        element.rel = 'stylesheet';
+        const { allCounterElement } = getFirstLoadElements();
+        setTimeout(() => {
+          const allComplete = window.perfume.end('AllComplete');
+          if (!isNaN(allComplete)) allCounterElement.textContent = Math.round(allComplete - 500);
+        }, 500);
+      };
     </script>
-    <link href="http://deelay.me/2000/localhost:3000/examples/first-load-full.css" rel="stylesheet" />
   </body>
 </html>

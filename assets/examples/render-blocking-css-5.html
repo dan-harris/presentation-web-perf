@@ -15,20 +15,112 @@
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" />
-    <link href="http://deelay.me/3000/localhost:3000/examples/first-load-full.css" rel="stylesheet" />
-    <!-- <link
-      rel="preload"
-      href="http://deelay.me/4000/localhost:3000/examples/first-load-full.css"
-      as="style"
-      onload="this.rel='stylesheet'"
-    /> -->
+    <link rel="preload" href="http://deelay.me/2000/localhost:3000/examples/first-load-full.css" as="style" onload="onDOMLoad(this)" />
     <script src="https://unpkg.com/perfume.js/dist/perfume.iife.min.js"></script>
-    <!-- <style>
-      html,
+    <style>
       body {
         background-color: white; /* explicitly set this so we can hide loading spinners behing iframe */
-      } 
-    </style> -->
+      }
+      code {
+        line-height: 1.2;
+      }
+      /* base */
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: 'Fira Sans', sans-serif;
+        font-size: 16px;
+        width: 100%;
+        text-align: center;
+      }
+      /* 
+@font-face {
+  font-family: 'FuraCode Nerd Font Mono';
+  src: url('./Fura-Code-Retina-Nerd-Font-Complete-Mono.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+} */
+
+      code {
+        text-align: left;
+        font-size: 1.75rem;
+        font-family: 'FuraCode Nerd Font Mono', monospace;
+        font-weight: 600;
+      }
+
+      :focus {
+        outline: #865cd6 auto 5px;
+      }
+
+      /* code preview section */
+      section.code {
+        text-align: left;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      /* meta indicators */
+      section.indicators {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 0.75rem;
+      }
+
+      section.indicators label {
+        font-size: 3rem;
+        font-family: 'Fjalla One';
+        display: inline-block;
+        text-align: right;
+      }
+
+      section.indicators label:not(:last-of-type) {
+        margin-right: 1.5rem;
+      }
+
+      /* action buttons */
+      section.actions {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      section.actions button:not(:last-of-type) {
+        margin-right: 1.25rem;
+      }
+
+      button {
+        font-family: 'Fira Sans';
+        font-size: 2.5rem;
+        background: none;
+        border: none;
+        display: flex;
+        flex-direction: row;
+        color: #9c9c9c;
+        padding-bottom: 0.25rem;
+      }
+
+      button svg {
+        margin-right: 0.75rem;
+        margin-top: 0.5rem;
+        stroke: currentColor;
+      }
+
+      button.reset-button svg {
+        height: 40px;
+        width: 40px;
+        margin-right: 0.5rem;
+      }
+
+      button:hover {
+        color: black;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        color: initial;
+        opacity: 0.2;
+      }
+    </style>
   </head>
   <body>
     <!-- main content -->
@@ -38,12 +130,14 @@
         <code>
           &lt;html&gt;<br />
           &nbsp;&nbsp;&lt;head&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;.. <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;link href=&quot;one-big-file-of.css&quot; rel=&quot;stylesheet&quot; /&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;.. <br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;style&gt;<br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* critical styles */<br /></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/style&gt;<br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
           &nbsp;&nbsp;&lt;/head&gt;<br />
           &nbsp;&nbsp;&lt;body&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;.. <br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
           &nbsp;&nbsp;&lt;/body&gt; <br />
           &lt;/html&gt;<br />
         </code>
@@ -53,6 +147,7 @@
       <section class="indicators">
         <label><span class="fp-counter">0</span> FP</label>
         <label><span class="fmp-counter">0</span> FMP</label>
+        <label><span class="all-counter">0</span> ALL</label>
       </section>
 
       <!-- actions -->
@@ -82,14 +177,15 @@
        * setup perfume for our load metrics
        */
       window.perfume = new Perfume({ firstPaint: true, firstContentfulPaint: true, firstInputDelay: true });
-      window.perfume.start('FirstMeaningfulPaint');
+      window.perfume.start('AllComplete');
 
       /**
        * reload the page so we can check metrics
        */
       function reloadPage() {
         document.body.innerHTML = '';
-        window.location = window.location;
+        document.body.style.backgroundColor = 'transparent'; // shifty tricks to show background spinner 😱
+        setTimeout(() => (window.location = window.location), 1000);
       }
 
       /**
@@ -98,7 +194,8 @@
       function getFirstLoadElements() {
         const FPCounterElement = document.querySelector('.fp-counter');
         const FMPCounterElement = document.querySelector('.fmp-counter');
-        return { FPCounterElement, FMPCounterElement };
+        const allCounterElement = document.querySelector('.all-counter');
+        return { FPCounterElement, FMPCounterElement, allCounterElement };
       }
 
       /**
@@ -109,9 +206,20 @@
         setTimeout(() => {
           FPCounterElement.textContent = Math.round(window.perfume.firstPaintDuration);
           FMPCounterElement.textContent = Math.round(window.perfume.firstPaintDuration); //Math.round(window.perfume.end('FirstMeaningfulPaint'));
-        }, 1000);
+        }, 500);
       });
+
+      /**
+       * set our all complete once loaded
+       */
+      window.onDOMLoad = function onDOMLoad(element) {
+        element.rel = 'stylesheet';
+        const { allCounterElement } = getFirstLoadElements();
+        setTimeout(() => {
+          const allComplete = window.perfume.end('AllComplete');
+          if (!isNaN(allComplete)) allCounterElement.textContent = Math.round(allComplete - 500);
+        }, 500);
+      };
     </script>
-    <!-- <link href="http://deelay.me/3000/localhost:3000/examples/first-load-full.css" rel="stylesheet" /> -->
   </body>
 </html>

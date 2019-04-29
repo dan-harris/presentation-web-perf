@@ -15,8 +15,8 @@
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" />
-    <link href="http://deelay.me/2000/localhost:3000/examples/first-load-full.css" rel="stylesheet" />
     <script src="https://unpkg.com/perfume.js/dist/perfume.iife.min.js"></script>
+    <script src="http://deelay.me/2000/localhost:3000/examples/blocking-js.js"></script>
     <style>
       body {
         background-color: white; /* explicitly set this so we can hide loading spinners behing iframe */
@@ -49,8 +49,12 @@
         font-weight: 600;
       }
 
+      code .comment {
+        color: #9e9e9e;
+      }
+
       :focus {
-        outline: #865cd6 auto 5px;
+        outline: #865cd6 dashed 5px;
       }
 
       /* code preview section */
@@ -97,6 +101,7 @@
         flex-direction: row;
         color: #9c9c9c;
         padding-bottom: 0.25rem;
+        margin: 0.3rem;
       }
 
       button svg {
@@ -131,7 +136,7 @@
           &lt;html&gt;<br />
           &nbsp;&nbsp;&lt;head&gt; <br />
           <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel=&quot;stylesheet&quot; href=&quot;one-big-file-of.css&quot; /&gt; <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;script src=&quot;all-my.js&quot; &gt;&lt;/script&gt; <br />
           <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
           &nbsp;&nbsp;&lt;/head&gt;<br />
           &nbsp;&nbsp;&lt;body&gt; <br />
@@ -200,6 +205,6 @@
         }, 500);
       });
     </script>
-    <!-- <link href="http://deelay.me/3000/localhost:3000/examples/first-load-full.css" rel="stylesheet" /> -->
+    <!-- <link href="https://deelay.me/3000/localhost:3000/examples/first-load-full.css" rel="stylesheet" /> -->
   </body>
 </html>

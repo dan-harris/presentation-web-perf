@@ -27,5 +27,7 @@ export const images = {
   candy2: require('../assets/slide-images/candy-2.svg'),
   gearSmall: require('../assets/slide-images/gear-small.svg'),
   timeLeft: require('../assets/slide-images/time-left.svg'),
-  play: require('../assets/slide-images/play.svg')
+  play: require('../assets/slide-images/play.svg'),
+  browserLoad: require('../assets/slide-images/browser-load.svg'),
+  browserAnimate: require('../assets/slide-images/browser-animate.svg')
 };

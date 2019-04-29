@@ -1,7 +1,8 @@
 import React from 'react';
 import Iframe from 'react-iframe';
-import { Deck, Heading, Layout, Slide, Text } from 'spectacle';
+import { Appear, Code, Deck, Fill, Fit, Heading, Image, Layout, Slide, Text } from 'spectacle';
 import preloader from 'spectacle/lib/utils/preloader';
+import { fadeInCustom } from './components/default-attrs/appear-defaults';
 import { defaultBG, highlightBG } from './components/default-attrs/slide-defaults';
 import { HeaderWithSub } from './components/header-with-sub';
 import { HeadingWithEmphasis } from './components/heading-with-emphasis';
@@ -16,13 +17,10 @@ import BrowserFrameFlowSlideNotes from './slide-notes/13-browser-frame-flow.md';
 import ProfileSlideNotes from './slide-notes/2-profile.md';
 import ProfileLinksSlideNotes from './slide-notes/3-profile-links.md';
 import IveBeenThinkingSlideNotes from './slide-notes/4-ive-been-thinking.md';
-import ShowOfHandsSlideNotes from './slide-notes/7-show-of-hands.md';
 import WhatPerfBasicsSlideNotes from './slide-notes/8-what-perf-basics.md';
-import FirstLoadAndAnimationSlideNotes from './slide-notes/9-first-load-and-animations.md';
 import { TitleSlideContent } from './slides/1-title';
 import { BrowserFlow } from './slides/12-browser-flow';
 import { BrowserFrameFlow } from './slides/13-browser-frame-flow';
-import { FirstLoadAndAnimationSlideContent } from './slides/9-first-load-and-animations';
 import './styles/globals.css';
 import './styles/prism-theme.css';
 import { createCustomTheme } from './styles/theme-custom';
@@ -78,11 +76,6 @@ export default class Presentation extends React.Component {
           <HeaderWithSub>why performance?</HeaderWithSub>
         </Slide>
 
-        {/* SLIDE 5 */}
-        <Slide {...defaultBG} notes={ShowOfHandsSlideNotes}>
-          <HeaderWithSub>show of hands</HeaderWithSub>
-        </Slide>
-
         {/*
          * ======================
          * OVERVIEW
@@ -91,12 +84,25 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 6 */}
         <Slide {...highlightBG} notes={WhatPerfBasicsSlideNotes}>
-          <HeaderWithSub>what perf basics?</HeaderWithSub>
-        </Slide>
-
-        {/* SLIDE 7 */}
-        <Slide {...defaultBG} notes={FirstLoadAndAnimationSlideNotes}>
-          <FirstLoadAndAnimationSlideContent />
+          <Layout style={{ padding: '0 8rem' }}>
+            <Appear {...fadeInCustom(0.3)}>
+              <Fill>
+                <Image src={images.browserLoad} />
+                <Text>first load</Text>
+              </Fill>
+            </Appear>
+            <Appear {...fadeInCustom(0.3)}>
+              <Fit style={{ display: 'flex', alignItems: 'center', paddingBottom: '2.5rem' }}>
+                <HeadingWithEmphasis size={4}>+</HeadingWithEmphasis>
+              </Fit>
+            </Appear>
+            <Appear {...fadeInCustom(0.3)}>
+              <Fill>
+                <Image src={images.browserAnimate} />
+                <Text>animations</Text>
+              </Fill>
+            </Appear>
+          </Layout>
         </Slide>
 
         {/*
@@ -107,7 +113,7 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE 8 */}
         <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
-          <HeaderWithSub subheading="test time">whaddya know?</HeaderWithSub>
+          <HeaderWithSub subheading="test time">background</HeaderWithSub>
         </Slide>
 
         {/* SLIDE 9 */}
@@ -210,7 +216,7 @@ export default class Presentation extends React.Component {
           <HeadingWithEmphasis size={3} style={{ textAlign: 'right' }}>
             inline css
           </HeadingWithEmphasis>
-          <Iframe src="./examples/render-blocking-css-5.html" width="1000px" height="600px" />
+          <Iframe src="./examples/render-blocking-css-5.html" width="1000px" height="610px" />
         </Slide>
 
         {/* SLIDE ?? */}
@@ -295,6 +301,11 @@ export default class Presentation extends React.Component {
           <HeaderWithSub subheading="animations">pretty looking</HeaderWithSub>
         </Slide>
 
+        {/* SLIDE 11 */}
+        <Slide {...defaultBG} notes={BrowserFrameFlowSlideNotes}>
+          <BrowserFrameFlow />
+        </Slide>
+
         {/* SLIDE ?? */}
         <Slide {...highlightBG} notes={PlaceholderSlideNotes}>
           <HeaderWithSub>transform positioning</HeaderWithSub>
@@ -302,7 +313,30 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE ?? */}
         <Slide {...highlightBG} notes={PlaceholderSlideNotes} className="external-frame">
-          <Iframe src="./examples/position-vs-transform.html" width="1000px" height="530px" />
+          <div style={{ textAlign: 'left', width: '490px', margin: 'auto', lineHeight: '1.3' }}>
+            <Code>.animate-element &#123; </Code>
+            <br />
+            <Code>&nbsp;&nbsp;transform:</Code>
+            <br />
+            <Code>&nbsp;&nbsp;&nbsp;translate(0px, 10px);</Code>
+            <br />
+            <Code> &#125;</Code>
+          </div>
+          <HeaderWithSub subheading="vs" />
+          <div style={{ textAlign: 'left', width: '490px', margin: 'auto', lineHeight: '1.3' }}>
+            <Code>.animate-element &#123; </Code>
+            <br />
+            <Code>&nbsp;&nbsp;position: absolute;</Code>
+            <br />
+            <Code>&nbsp;&nbsp;left: 10px;</Code>
+            <br />
+            <Code> &#125;</Code>
+          </div>
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes} className="external-frame">
+          <Iframe src="./examples/position-vs-transform.html" width="1000px" height="540px" />
         </Slide>
 
         {/* SLIDE ?? */}
@@ -312,12 +346,30 @@ export default class Presentation extends React.Component {
 
         {/* SLIDE ?? */}
         <Slide {...highlightBG} notes={PlaceholderSlideNotes} className="external-frame">
-          <Iframe src="./examples/settimeout-vs-raf.html" width="1000px" height="530px" />
+          <div style={{ textAlign: 'left', width: '750px', margin: 'auto', lineHeight: '1.3' }}>
+            <Code>setTimeout(() =&gt; animate(), 16)</Code>
+          </div>
+          <HeaderWithSub subheading="vs" />
+          <div style={{ textAlign: 'left', width: '750px', margin: 'auto', lineHeight: '1.3' }}>
+            <Code>requestAnimationFrame(() =&gt; animate())</Code>
+          </div>
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes} className="external-frame">
+          <Iframe src="./examples/settimeout-vs-raf.html" width="1000px" height="540px" />
+        </Slide>
+
+        {/* SLIDE ?? */}
+        <Slide {...highlightBG} notes={PlaceholderSlideNotes} className="external-frame">
+          <Code>&lt;my-element class="animate-element" /&gt;</Code>
+          <HeaderWithSub subheading="vs" />
+          <Code>requestAnimationFrame(() =&gt; animate())</Code>
         </Slide>
 
         {/* SLIDE ?? */}
         <Slide {...highlightBG} notes={PlaceholderSlideNotes} style={{ padding: 0 }}>
-          <Iframe src="./examples/css-vs-js.html" width="1000px" height="530px" />
+          <Iframe src="./examples/css-vs-js.html" width="1000px" height="540px" />
         </Slide>
 
         {/*

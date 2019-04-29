@@ -21,6 +21,7 @@ code {
   font-size: 1.75rem;
   font-family: 'FuraCode Nerd Font Mono', monospace;
   font-weight: 600;
+  font-variant-ligatures: common-ligatures;
 }
 
 code .comment {
@@ -28,7 +29,7 @@ code .comment {
 }
 
 :focus {
-  outline: #865cd6 auto 5px;
+  outline: #865cd6 dashed 5px;
 }
 
 /* code preview section */

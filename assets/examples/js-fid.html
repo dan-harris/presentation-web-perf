@@ -48,8 +48,12 @@
         font-weight: 600;
       }
 
+      code .comment {
+        color: #9e9e9e;
+      }
+
       :focus {
-        outline: #865cd6 auto 5px;
+        outline: #865cd6 dashed 5px;
       }
 
       /* code preview section */
@@ -57,6 +61,76 @@
         text-align: left;
         margin-top: 2rem;
         margin-bottom: 2rem;
+      }
+
+      button.action-thing {
+        color: black;
+        position: absolute;
+        right: 200px;
+        top: 130px;
+        padding: 1rem;
+      }
+
+      button.action-thing svg {
+        margin: 0;
+      }
+
+      button.action-thing .action-thing__left,
+      button.action-thing .action-thing__right {
+        opacity: 0;
+        color: #865cd6;
+      }
+
+      @keyframes rumble {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+        25% {
+          -webkit-transform: translate(3px, 0px) rotate(-3deg);
+        }
+        50% {
+          -webkit-transform: translate(0px, -3px) rotate(0deg);
+        }
+        75% {
+          -webkit-transform: translate(-3px, 0px) rotate(3deg);
+        }
+        100% {
+          -webkit-transform: translate(0px, 3px) rotate(0deg);
+        }
+      }
+
+      button.action-thing.animate-thing {
+        animation: rumble 0.3s infinite linear;
+      }
+
+      @keyframes fadeupleft {
+        0% {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-5px);
+          opacity: 0;
+        }
+      }
+
+      button.action-thing.animate-thing .action-thing__left {
+        animation: fadeupleft 0.5s infinite linear;
+      }
+
+      @keyframes fadeupright {
+        0% {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(5px);
+          opacity: 0;
+        }
+      }
+
+      button.action-thing.animate-thing .action-thing__right {
+        animation: fadeupright 0.5s infinite linear;
       }
 
       /* meta indicators */
@@ -94,8 +168,10 @@
         border: none;
         display: flex;
         flex-direction: row;
-        color: #9c9c9c;
+color: #9c9c9c;
         padding-bottom: 0.25rem;
+        margin: 0.3rem;
+        margin: 0.3rem;
       }
 
       button svg {
@@ -130,23 +206,42 @@
           &lt;html&gt;<br />
           &nbsp;&nbsp;&lt;head&gt; <br />
           <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;style&gt;<br />
-          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* critical styles */<br /></span>
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/style&gt;<br />
-          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
           &nbsp;&nbsp;&lt;/head&gt;<br />
           &nbsp;&nbsp;&lt;body&gt; <br />
           <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;.. <br /></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;<br />
+          <span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* some js */<br /></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br />
           &nbsp;&nbsp;&lt;/body&gt; <br />
           &lt;/html&gt;<br />
         </code>
+        <button class="action-thing">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              class="action-thing__right"
+              d="M1.57054 43.2367C4.49993 27.6149 13.7182 13.6421 26.9507 4.7676L30.4791 10.1265C18.7093 18.0371 10.5077 30.4662 7.88675 44.3651L1.57054 43.2367Z"
+              fill="currentColor"
+              stroke="white"
+            />
+            <path
+              class="action-thing__left"
+              d="M89.5214 10.1268L93.0498 4.76785C106.282 13.6423 115.501 27.6151 118.43 43.2369L112.114 44.3653C109.493 30.4663 101.291 18.0371 89.5214 10.1268Z"
+              fill="currentColor"
+              stroke="white"
+            />
+            <path
+              d="M102.142 72.9818V73.1889L102.289 73.3353L109.558 80.6047V95.2806V95.7806H110.058H115.738V102.196H80.6785H80.26L80.1863 102.608C78.4708 112.197 70.0743 119.5 60.0012 119.5C49.9282 119.5 41.5314 112.197 39.8162 102.608L39.7425 102.196H39.324H4.26465V95.7806H9.94449H10.4445V95.2806V80.6047L17.7139 73.3353L17.8603 73.1889V72.9818V54.2922C17.8603 35.1565 30.7894 18.5066 49.0075 13.6029L49.3775 13.5033V13.1201V11.1237C49.3775 5.26624 54.1438 0.5 60.0012 0.5C65.8587 0.5 70.625 5.26624 70.625 11.1237V13.1201V13.5033L70.995 13.6029C89.2131 18.5066 102.142 35.1565 102.142 54.2922V72.9818ZM17.3603 83.4694H16.8603V95.2804V95.7804H17.3603H102.642H103.142V95.2804V83.4692V83.2621L102.996 83.1156L95.7264 75.8463V54.2919C95.7264 37.2002 83.566 22.4491 66.8095 19.2173L64.2092 18.7158V11.1237C64.2092 8.80304 62.3219 6.91581 60.0012 6.91581C57.6806 6.91581 55.7933 8.80304 55.7933 11.1237V18.7161L53.193 19.2176C36.4364 22.4494 24.2761 37.2004 24.2761 54.2922V75.8465L17.0068 83.1159L17.3603 83.4694ZM46.9237 102.196H46.2619L46.4427 102.833C48.1206 108.741 53.5599 113.084 60.0012 113.084C66.4424 113.084 71.8819 108.741 73.5598 102.833L73.7406 102.196H73.0788H46.9237Z"
+              fill="currentColor"
+              stroke="white"
+            />
+          </svg>
+        </button>
       </section>
 
       <!-- 'meta' indicators -->
       <section class="indicators">
-        <label><span class="fp-counter">0</span> FP</label>
+        <label><span class="fp-counter">0</span> FMP</label>
         <label><span class="fid-counter">0</span> FID</label>
-        <label><span class="all-counter">0</span> ALL</label>
       </section>
 
       <!-- actions -->
@@ -176,7 +271,7 @@
        * setup perfume for our load metrics
        */
       window.perfume = new Perfume({ firstPaint: true, firstContentfulPaint: true, firstInputDelay: true });
-      window.perfume.start('AllComplete');
+      window.perfume.start('FirstInputDelay');
 
       /**
        * reload the page so we can check metrics
@@ -193,8 +288,8 @@
       function getFirstLoadElements() {
         const FPCounterElement = document.querySelector('.fp-counter');
         const FIDCounterElement = document.querySelector('.fid-counter');
-        const allCounterElement = document.querySelector('.all-counter');
-        return { FPCounterElement, FIDCounterElement, allCounterElement };
+        const buttonActionElement = document.querySelector('.action-thing');
+        return { FPCounterElement, FIDCounterElement, buttonActionElement };
       }
 
       /**
@@ -207,6 +302,7 @@
         if (num <= 1) {
           return 1;
         }
+        console.log('✨', num);
         return (memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo));
       }
 
@@ -216,25 +312,23 @@
       document.addEventListener('DOMContentLoaded', () => {
         const { FPCounterElement, FIDCounterElement } = getFirstLoadElements();
         setTimeout(() => {
-          window.perfume.start('FirstInputDelay');
           fibonacci(1200);
           const firstInputDelay = window.perfume.end('FirstInputDelay');
           FPCounterElement.textContent = Math.round(window.perfume.firstPaintDuration);
-          FIDCounterElement.textContent = Math.round(firstInputDelay - 500); //Math.round(window.perfume.end('FirstMeaningfulPaint'));
+          FIDCounterElement.textContent = Math.round(firstInputDelay);
         }, 500);
       });
 
       /**
-       * set our all complete once loaded
+       * create a js driven action button
        */
-      //   window.onDOMLoad = function onDOMLoad(element) {
-      //     element.rel = 'stylesheet';
-      //     const { allCounterElement } = getFirstLoadElements();
-      //     setTimeout(() => {
-      //       const allComplete = window.perfume.end('AllComplete');
-      //       if (!isNaN(allComplete)) allCounterElement.textContent = Math.round(allComplete - 500);
-      //     }, 500);
-      //   };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const { buttonActionElement } = getFirstLoadElements();
+        buttonActionElement.addEventListener('mouseenter', () => (buttonActionElement.style.color = '#865cd6'));
+        buttonActionElement.addEventListener('mouseleave', () => (buttonActionElement.style.color = 'black'));
+        buttonActionElement.addEventListener('click', () => buttonActionElement.classList.toggle('animate-thing'));
+      });
     </script>
   </body>
 </html>

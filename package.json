@@ -4,7 +4,7 @@
   "description": "danharris.io spectacle presentation boilerplate",
   "main": "lib/index.js",
   "scripts": {
-    "build": "npm run clean & cross-env NODE_ENV=production webpack --config webpack.config.production.js",
+    "build": "npm run clean & cross-env NODE_ENV=production webpack --config webpack.config.production.js && npm run replace",
     "clean": "rimraf dist",
     "deploy": "aws s3 sync ./dist s3://presentations.danharris.io/web-perf --exclude \"index.html\" --profile dan",
     "deploy:full": "aws s3 sync ./dist s3://presentations.danharris.io/web-perf --profile dan",
@@ -16,7 +16,10 @@
     "patch:spectacle": "patch-package spectacle",
     "patch:spectacle-code-slide": "patch-package spectacle-code-slide",
     "postinstall": "patch-package",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "replace": "npm run replace:urls && npm run replace:https",
+    "replace:urls": "replace-in-file localhost:3000 presentations.danharris.io dist/examples/*.html --verbose",
+    "replace:https": "replace-in-file http://deelay.me https://deelay.me dist/examples/*.html --verbose"
   },
   "author": "Formidable Labs <hello@formidable.com> (https://formidable.com)",
   "contributors": [
@@ -32,6 +35,7 @@
     "react-confetti": "^2.3.0",
     "react-dom": "^16.5.2",
     "react-iframe": "^1.8.0",
+    "replace-in-file": "^4.0.0",
     "spectacle": "^5.2.2",
     "spectacle-code-slide": "^0.5.2",
     "spectacle-renderer": "^0.0.3"

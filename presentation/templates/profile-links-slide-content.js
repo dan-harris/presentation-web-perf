@@ -12,20 +12,14 @@ const CenteredImage = props => (
 
 export const ProfileLinksSlideContent = () => (
   <>
-    <Layout style={{ justifyContent: 'center', flexDirection: 'column', marginBottom: '5rem' }}>
-      <Heading size={2}>please heckle me</Heading>
-      <SubHeading size={3}>on le socials</SubHeading>
+    <Layout style={{ justifyContent: 'center', flexDirection: 'column', marginBottom: '4rem' }}>
+      <Heading size={2}>deets are on</Heading>
+      <SubHeading size={3}>danharris.io</SubHeading>
     </Layout>
-    <Layout style={{ justifyContent: 'space-evenly', padding: '0 3rem' }}>
-      <CenteredImage src={images.logoTwitter} height={65}>
-        @danharris_io
-      </CenteredImage>
-      <CenteredImage src={images.logoMedium} height={65}>
-        @danharris_io
-      </CenteredImage>
-      <CenteredImage src={images.logoGithub} height={65}>
-        @dan-harris
-      </CenteredImage>
+    <Layout style={{ justifyContent: 'space-evenly', padding: '0 14rem' }}>
+      <CenteredImage src={images.logoTwitter} height={65} />
+      <CenteredImage src={images.logoMedium} height={65} />
+      <CenteredImage src={images.logoGithub} height={65} />
     </Layout>
   </>
 );

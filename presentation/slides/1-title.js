@@ -8,6 +8,6 @@ import { SubHeading } from '../components/sub-heading';
 export const TitleSlideContent = () => (
   <>
     <Heading size={1}>perf matters</Heading>
-    <SubHeading size={3}>web basics</SubHeading>
+    <SubHeading size={3}>some basics</SubHeading>
   </>
 );

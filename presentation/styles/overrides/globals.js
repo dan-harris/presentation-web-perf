@@ -27,5 +27,11 @@ export const createGlobals = (colors = {}, fonts = {}) => ({
   },
   '.fullwidth': {
     maxWidth: '100% !important'
+  },
+  '.spectacle-content.external-frame': {
+    padding: 0
+  },
+  iframe: {
+    background: 'url(./slide-images/gear-small-spin.svg) center center no-repeat'
   }
 });

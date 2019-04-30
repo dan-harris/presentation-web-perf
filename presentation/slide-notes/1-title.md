@@ -5,4 +5,6 @@
 - interactive - shout out if you want to voice opinion... heckle...whatever
 - so performance matters...
 - ... only when it matters
-- let's have a chat about a couple of basic web performance tweaks
+- chat about some base stuff
+- no expert so anything wrong, please yell out or talk to me after
+- all learning

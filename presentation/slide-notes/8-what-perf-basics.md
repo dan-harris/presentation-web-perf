@@ -1,4 +1,0 @@
-- with previous context in mind
-- what are we actually looking at today?
-- well a couple of things, that might seem simple...
-- but, if you can get them right, are pretty awesome

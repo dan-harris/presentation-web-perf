@@ -1,15 +1,16 @@
-### Not an attempt to be 'smarter-art-thou'
+### background knowledge
 
 - gauge level we're all at
 - somewhat tailor some of my next slides
 - just interested anyway 🤷‍♀️
 
-### Confidence with Web
+### confidence with web
 
 - e.g. building some HTML/templates + CSS
 - loading assets .etc
 
-### Confidence with JS
+### confidence with JS
 
-- browser event loop?
+- browser render lifecycle?
+- JS event loop
 - JS tasks .etc
